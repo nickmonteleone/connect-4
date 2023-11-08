@@ -14,6 +14,7 @@ let currPlayer = 1; // active player: 1 or 2
 const board = []; // array of rows, each row is array of cells  (board[y][x])
 // (board[5][0] would be the bottom-left spot on the board)
 
+
 /** makeBoard: fill in global `board`:
  *    board = array of rows, each row is array of cells  (board[y][x])
  *  no inputs because using global constants, no return because modifying global
@@ -35,12 +36,14 @@ function makeBoard() {
   console.log("makeBoard complete", board);
 }
 
+
 /** makeHtmlBoard: make HTML table and row of column tops.
- * No inputs bc using global board, no return bc interacting with
+ * No inputs bc using global board, no return bc interacting with DOM
 */
 
 function makeHtmlBoard() {
   const htmlBoard = document.getElementById("board");
+  console.log("Starting HTML board");
 
   // Make element for top row
   const top = document.createElement("tr");
@@ -58,24 +61,27 @@ function makeHtmlBoard() {
   // dynamically creates the main part of html board
   // uses HEIGHT to create table rows
   // uses WIDTH to create table cells for each row
-  const row = [];
+
 
   for (let y = 0; y < HEIGHT; y++) {
     // Create a table row element and assign to a "row" variable
-    row = [];
+    const row = document.createElement('tr');
+    row.setAttribute("id", `r-${y}`);
     for (let x = 0; x < WIDTH; x++) {
-      // TODO: Create a table cell element and assign to a "cell" variable
-      const tableCell = document.createElement('td');
-      tableCell.setAttribute("id", `c-${y}-${x}`);
-      // TODO: add an id, c-y-x, to the above table cell element
-      //   (for example, for the cell at y=2, x=3, the ID should be "c-2-3")
+      // Create a table cell element and assign to a "cell" variable
+      const cell = document.createElement('td');
+      cell.setAttribute("id", `c-${y}-${x}`);
+      // add an id, c-y-x, to the above table cell element
+      // (for example, for the cell at y=2, x=3, the ID should be "c-2-3")
 
-      // TODO: append the table cell to the table row
+      // append the table cell to the table row
+      row.append(cell);
 
     }
-    // TODO: append the row to the html board
-
+    // append the row to the html board
+    htmlBoard.append(row);
   }
+  console.log("Ending HTML board");
 }
 
 /** findSpotForCol: given column x, return y coordinate of furthest-down spot
