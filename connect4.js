@@ -16,10 +16,22 @@ const board = []; // array of rows, each row is array of cells  (board[y][x])
 
 /** makeBoard: fill in global `board`:
  *    board = array of rows, each row is array of cells  (board[y][x])
+ *  no inputs because using global constants, no return because modifying global
  */
 
 function makeBoard() {
-  // TODO: set "board" to empty HEIGHT x WIDTH matrix array
+  // set "board" to empty HEIGHT x WIDTH matrix array
+  console.log("starting makeBoard");
+  let row;
+  for (let y = 0; y < HEIGHT; y++) {
+    row = [];
+    for (let x = 0; x < WIDTH; x++) {
+      row.push(null);
+    }
+    board.push(row);
+  }
+
+  console.log("makeBoard complete", board);
 }
 
 /** makeHtmlBoard: make HTML table and row of column tops. */
