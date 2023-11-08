@@ -24,13 +24,15 @@ function makeBoard() {
   // set "board" to empty HEIGHT x WIDTH matrix array
   console.log("starting makeBoard");
 
+  // more efficient way to do using Array.from()
   const row = [];
   for (let x = 0; x < WIDTH; x++) {
     row.push(null);
   }
 
+  // more efficient way to do using Array.from()
   for (let y = 0; y < HEIGHT; y++) {
-    board.push(row);
+    board.push(row.slice());
   }
 
   console.log("makeBoard complete", board);
