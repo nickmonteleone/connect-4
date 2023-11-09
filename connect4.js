@@ -90,27 +90,15 @@ function makeHtmlBoard() {
  *    (return null if filled) */
 
 function findSpotForCol(x) {
-  // TODO: write the real version of this, rather than always returning 5
-
+  // Write the real version of this, rather than always returning 5
   for (let y = 0; y < HEIGHT; y++) {
-    if (...) {
-
-    } else if (board[y][x] !== null) {
+    if (board[y][x] !== null) {
       return null;
     }
-
-
-
-    if (board[y][x] !== null || board[y][x] === undefined) {
-      console.log(board[y-1][x]);
+    else if (y+1 === HEIGHT || board[y+1][x] !== null) {
       return y;
     }
-    // } else {
-    //   return null;
-    console.log(board[y][x]);
   }
-  console.log('Went through for loop', HEIGHT);
-  return HEIGHT;
 }
 
 /** placeInTable: update DOM to place piece into HTML table of board */
