@@ -105,6 +105,14 @@ function findSpotForCol(x) {
 
 function placeInTable(y, x) {
   // TODO: make a div and insert into correct table cell
+  const cell = document.getElementById(`c-${y}-${x}`);
+  console.log('This is cell ', cell);
+  const piece = document.createElement('div');
+  console.log('This is piece ', piece);
+  piece.setAttribute('id', 'p1');
+  piece.classList.add('piece');
+  cell.append(piece);
+  board[y][x] = 1;
 }
 
 /** checkForWin: check board cell-by-cell for "does a win start here?" */

@@ -13,7 +13,19 @@
   margin: 5px;
   width: 80%;
   height: 80%;
+  border-radius: 50%;
+  background-color: red;
 }
+
+/* .piece #p2 {
+  TODO: make into circles
+  margin: 5px;
+  width: 80%;
+  height: 80%;
+  border-radius: 25%;
+  background-color: blue;
+}
+*/
 
 /* TODO: make pieces red/blue,  depending on player 1/2 piece */
 
