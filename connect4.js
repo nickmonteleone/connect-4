@@ -108,8 +108,7 @@ function placeInTable(y, x) {
   // Make a div and insert into correct table cell
   const cell = document.getElementById(`c-${y}-${x}`);
   const piece = document.createElement('div');
-  piece.setAttribute('id', `p${currPlayer}`);
-  piece.classList.add('piece');
+  piece.classList.add('piece', `p${currPlayer}`);
   cell.append(piece);
 
 }
@@ -208,12 +207,7 @@ function handleClick(evt) {
 
   // switch players
   // switch currPlayer 1 <-> 2
-  if (currPlayer === 1) {
-    currPlayer = 2;
-  }
-  else {
-    currPlayer = 1;
-  }
+  currPlayer === 1 ? currPlayer = 2 : currPlayer = 1;
 }
 
 /** Start game. */
