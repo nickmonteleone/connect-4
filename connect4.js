@@ -129,8 +129,8 @@ function checkForWin() {
     // simpler version from solution to only have return compare statement
     return cells.every(
       ([y,x]) =>
-        x > 0 &&
-        y > 0 &&
+        x >= 0 &&
+        y >= 0 &&
         x < WIDTH &&
         y < HEIGHT &&
         board[y][x] === currPlayer
