@@ -90,15 +90,13 @@ function makeHtmlBoard() {
  *    (return null if filled) */
 
 function findSpotForCol(x) {
-  // Write the real version of this, rather than always returning 5
-  for (let y = 0; y < HEIGHT; y++) {
-    if (board[y][x] !== null) {
-      return null;
-    }
-    else if (y+1 === HEIGHT || board[y+1][x] !== null) {
+  // note: swapped from top-to-bottom to bottom-to-top
+  for (let y = HEIGHT - 1; y >= 0; y--) {
+    if (board[y][x] === null) {
       return y;
     }
   }
+  return null;
 }
 
 /** placeInTable: update DOM to place piece into HTML table of board */
@@ -127,7 +125,9 @@ function checkForWin() {
 
     // Check four cells to see if they're all legal & all color of current
     // player
-    for (let cell of cells) {
+
+    // note: consider using .every() here
+    return cells.every(cell => {
       const y = cell[0];
       const x = cell[1];
       if (x < 0 || y < 0) {
@@ -139,9 +139,8 @@ function checkForWin() {
       else if (board[y][x] !== currPlayer) {
         return false;
       }
-    }
-
-    return true;
+      return true;
+    });
   }
 
   // using HEIGHT and WIDTH, generate "check list" of coordinates
@@ -207,7 +206,9 @@ function handleClick(evt) {
 
   // switch players
   // switch currPlayer 1 <-> 2
-  currPlayer === 1 ? currPlayer = 2 : currPlayer = 1;
+
+
+  currPlayer = currPlayer === 1  ? 2 : 1;
 }
 
 /** Start game. */
