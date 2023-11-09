@@ -126,19 +126,15 @@ function checkForWin() {
     // Check four cells to see if they're all legal & all color of current
     // player
 
-    // note: consider using .every() here
-    return cells.every(([y, x]) => {
-      if (x < 0 || y < 0) {
-        return false;
-      }
-      else if (x >= WIDTH || y >= HEIGHT) {
-        return false;
-      }
-      else if (board[y][x] !== currPlayer) {
-        return false;
-      }
-      return true;
-    });
+    // simpler version from solution to only have return compare statement
+    return cells.every(
+      ([y,x]) =>
+        x > 0 &&
+        y > 0 &&
+        x < WIDTH &&
+        y < HEIGHT &&
+        board[y][x] === currPlayer
+    );
   }
 
   // using HEIGHT and WIDTH, generate "check list" of coordinates
