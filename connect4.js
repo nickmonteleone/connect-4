@@ -127,9 +127,7 @@ function checkForWin() {
     // player
 
     // note: consider using .every() here
-    return cells.every(cell => {
-      const y = cell[0];
-      const x = cell[1];
+    return cells.every(([y, x]) => {
       if (x < 0 || y < 0) {
         return false;
       }
